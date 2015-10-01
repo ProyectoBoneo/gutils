@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Dirección{% endblock %}
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="formfields">
+            <div id="localidad" class="formfield">
+                {{ form.localidad.label_tag }}
+                {{ form.localidad }}
+                {{ form.localidad.errors }}
+            </div>
+            <div id="calle" class="formfield">
+                {{ form.calle.label_tag }}
+                {{ form.calle }}
+                {{ form.calle.errors }}
+            </div>
+            <div id="numero" class="formfield">
+                {{ form.numero.label_tag }}
+                {{ form.numero }}
+                {{ form.numero.errors }}
+            </div>
+            <div id="piso" class="formfield">
+                {{ form.piso.label_tag }}
+                {{ form.piso }}
+                {{ form.piso.errors }}
+            </div>
+            <div id="division" class="formfield">
+                {{ form.division.label_tag }}
+                {{ form.division }}
+                {{ form.division.errors }}
+            </div>
+            <div id="codigo_postal" class="formfield">
+                {{ form.codigo_postal.label_tag }}
+                {{ form.codigo_postal }}
+                {{ form.codigo_postal.errors }}
+            </div>
+        </div>
+        {% confirm_button %}
+        {% go_back_button 'direcciones' %}
+    </form>
+{%  endblock %}

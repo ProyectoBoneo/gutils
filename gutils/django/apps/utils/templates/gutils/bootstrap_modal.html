@@ -1,0 +1,31 @@
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}
+<div class="modal fade" id="{% block modal_id %}{{ id }}{% endblock %}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog {% block modal_class %}{% if large %}modal-lg{% endif %}{% endblock %}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[X]</button>
+                <h4 class="modal-title" id="modal_title">{% block modal_title %}{{ titulo }}{% endblock %}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-content" id="{{ id }}-content">
+                    {% block contenido_modal %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-success" id="{% block confirm_id %}{{ id }}-confirm-button{% endblock %}">
+                    <i class="fa fa-check-circle"></i> {% if texto_confirmar %}{{ texto_confirmar }}{% else %}Confirmar{% endif %}
+                </button>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="{% block cancel_id %}{{ id }}-cancel-button
+                {% endblock %}">
+                    <i class="fa fa-arrow-circle-left"></i>  {% block cancel_text %}Volver{% endblock %}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

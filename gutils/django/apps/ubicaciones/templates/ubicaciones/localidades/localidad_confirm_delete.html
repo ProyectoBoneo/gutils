@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Eliminar localidad{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>¿Desea eliminar la localidad "{{ object }}"?</p>
+        {% confirm_button %}
+        {% go_back_button 'localidades' %}
+    </form>
+{% endblock %}

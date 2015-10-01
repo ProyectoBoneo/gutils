@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Localidad{% endblock %}
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="formfields">
+            <div id="nombre" class="formfield">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+                {{ form.nombre.errors }}
+            </div>
+            <div id="codigo_postal" class="formfield">
+                {{ form.codigo_postal.label_tag }}
+                {{ form.codigo_postal }}
+                {{ form.codigo_postal.errors }}
+            </div>
+            <div id="departamento" class="formfield">
+                {{ form.departamento.label_tag }}
+                {{ form.departamento }}
+                {{ form.departamento.errors }}
+            </div>
+        </div>
+        {% confirm_button %}
+        {% go_back_button 'localidades' %}
+    </form>
+{%  endblock %}

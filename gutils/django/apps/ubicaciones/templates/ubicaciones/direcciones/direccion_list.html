@@ -1,0 +1,43 @@
+{%  extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Direcciones{% endblock %}
+{% block content %}
+    <h2>Direcciones</h2>
+    <a class="button" href={%  url 'nuevo_direccion' %}>Nueva dirección</a>
+    {% if object_list %}
+        <table class="datalist">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Calle</th>
+                    <th>Número</th>
+                    <th>Piso</th>
+                    <th>División</th>
+                    <th>Localidad</th>
+                    <th>Código postal</th>
+                    <th>Provincia</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.id }}</td>
+                        <td>{{ object.calle }}</td>
+                        <td>{{ object.numero }}</td>
+                        <td>{{ object.piso }}</td>
+                        <td>{{ object.division }}</td>
+                        <td>{{ object.localidad }}</td>
+                        <td>{{ object.codigo_postal }}</td>
+                        <td>{{ object.localidad.departamento.provincia }}</td>
+                        <td>{% edit_button 'editar_direccion' object.id %}</td>
+                        <td>{% delete_button 'eliminar_direccion' object.id %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay direcciones cargadas</p>
+    {% endif %}
+{% endblock %}

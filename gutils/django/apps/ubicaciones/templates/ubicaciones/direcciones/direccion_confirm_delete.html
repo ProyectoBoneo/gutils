@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Eliminar dirección{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>¿Desea eliminar la dirección "{{ object }}"?</p>
+        {% confirm_button %}
+        {% go_back_button 'direcciones' %}
+    </form>
+{% endblock %}

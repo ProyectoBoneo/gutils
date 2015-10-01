@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}País{% endblock %}
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="formfields">
+            <div id="nombre" class="formfield">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+                {{ form.nombre.errors }}
+            </div>
+            <div id="codigo_iso" class="formfield">
+                {{ form.codigo_iso.label_tag }}
+                {{ form.codigo_iso }}
+                {{ form.codigo_iso.errors }}
+            </div>
+        </div>
+        {% confirm_button %}
+        {% go_back_button 'paises' %}
+    </form>
+{%  endblock %}

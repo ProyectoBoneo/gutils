@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Eliminar departamento{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>¿Desea eliminar el departamento "{{ object }}"?</p>
+        {% confirm_button %}
+        {% go_back_button 'departamentos' %}
+    </form>
+{% endblock %}

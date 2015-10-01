@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load kiwi_tags %}
+{% block title %}Provincia{% endblock %}
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="formfields">
+            <div id="nombre" class="formfield">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+                {{ form.nombre.errors }}
+            </div>
+            <div id="pais" class="formfield">
+                {{ form.pais.label_tag }}
+                {{ form.pais }}
+                {{ form.pais.errors }}
+            </div>
+        </div>
+        {% confirm_button %}
+        {% go_back_button 'provincias' %}
+    </form>
+{%  endblock %}
