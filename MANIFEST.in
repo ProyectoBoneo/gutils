@@ -1,0 +1,5 @@
+recursive-include gutils/django/apps/ubicaciones/templates/*
+recursive-include gutils/django/apps/utils/templates/*
+recursive-include gutils/django/forms/typeahead/templates/*
+recursive-include gutils/django/forms/typeahead/static/*
+recursive-include gutils/reports/fonts/*
