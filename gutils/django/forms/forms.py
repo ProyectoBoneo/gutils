@@ -96,13 +96,6 @@ class BaseForm(forms.Form, GFormMixin):
 
 
 class BaseFilterForm(BaseForm):
-    CANTIDAD_ELEMENTOS = [50, 100, 200]
-    CANTIDAD_ELEMENTOS_CHOICES = [(cantidad, 'Mostrar {} elementos'.format(cantidad))
-                                  for cantidad in CANTIDAD_ELEMENTOS] + [('', 'Mostrar todo'), ]
-
-    elementos_mostrados = forms.IntegerField(widget=forms.Select(choices=CANTIDAD_ELEMENTOS_CHOICES),
-                                             initial=50, label='Elementos mostrados',
-                                             required=False)
 
     @property
     def filter_button(self):
@@ -110,21 +103,19 @@ class BaseFilterForm(BaseForm):
             button = render_to_string('gutils/forms/filter_form_button.html')
         except TemplateDoesNotExist:
             button = """
-                        <button class="button" type="submit">
+                        <button class="btn btn-default" type="submit">
                             <i class="fa fa-filter"></i> Filtrar
                         </button>
                      """
-        return mark_safe("""<div class="filter-buttons inline">""" + button +
-                         self.render_elementos_mostrados() + """</div>""")
-
-    def render_elementos_mostrados(self):
-        return str(self['elementos_mostrados'])
+        return mark_safe(button)
 
     def has_filters(self):
-        has_filters = False
-        if hasattr(self, 'Meta'):
-            has_filters = hasattr(self.Meta, 'filters')
-        return has_filters
+        try:
+            self.Meta.filters
+        except AttributeError:
+            return False
+        else:
+            return True
 
 
 class BaseFilterReportForm(BaseFilterForm):
