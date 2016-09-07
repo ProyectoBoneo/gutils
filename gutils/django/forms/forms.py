@@ -147,4 +147,6 @@ class BaseFilterReportForm(BaseFilterForm):
     def __init__(self, *args, **kwargs):
         super(BaseFilterReportForm, self).__init__(*args, **kwargs)
         self.fields['render_pdf_report'].widget.attrs['hidden'] = 'hidden'
+        self.fields['render_pdf_report'].widget.attrs['class'] = ''
         self.fields['render_xls_report'].widget.attrs['hidden'] = 'hidden'
+        self.fields['render_xls_report'].widget.attrs['class'] = ''

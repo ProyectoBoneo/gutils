@@ -36,6 +36,9 @@ class BaseModelReport(BaseReport):
     def create_document(self, response):
         return SimpleDocTemplate(response, **self.get_create_document_kwargs())
 
+    def get_page_templates(self):
+        return None
+
     def get_base_queryset(self):
         return self.model.objects.all()
 
@@ -47,13 +50,13 @@ class BaseModelReport(BaseReport):
 
         if 'ordering' in context:
             ordering = context['ordering']
-            queryset = queryset.order_by(ordering)
+            queryset = queryset.order_by(*ordering)
         elif self.ordering:
-            queryset = queryset.order_by(self.ordering)
+            queryset = queryset.order_by(*self.ordering)
         return queryset
 
     def get_file_name(self):
-        return self.filename if self.filename else self.get_model()._meta.verbose_name
+        return self.filename if self.filename else self.get_page_title()
 
     def get_page_size(self):
         return portrait(A4) if self.orientation == self.PORTRAIT else landscape(A4)
